@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang=en>
+  <head>
+    <meta charset=utf-8>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="css/tacit-css.min.css"/>
+    <title>The Vulnerable Movie Center</title>
+    <style>
+      body {
+        padding-top:0px;
+      }
+      .thin {
+        margin-top:5px;
+        margin-bottom:5px;
+      }
+      #search-form {
+        text-align:right;
+        margin-bottom:0;
+        padding-bottom:0;
+      }
+      #search-result {
+        display: none;
+      }
+      #movie-data {
+        padding-bottom:10px;
+      }
+      #playbill {
+        vertical-align:top;
+        margin:10px;
+      }
+      #movie-details {
+        padding-top: 5px;
+        display:inline-block;
+        width:40%;
+      }
+      #search-term {
+        font-style: italic;
+      }
+      #actions form {
+        padding-left: 10px;
+        display:inline;
+      }
+    </style>
+
+  <script src="js/search.js"></script>
+  </head>
+  <body>
+    <section>
+      <h1 style="margin-top:5px">The Vulnerable Movie Center</h1>
+      <hr class="thin">
+      <form id="search-form" onsubmit="return search()">
+        <input id="keyword" type="text" class="thin" placeholder="Search a movie"><button type="submit" class="thin">Go</button></form>
+      <hr class="thin">
+    </section>
+
+    <section id="search-result">
+      You searched for <span id="search-term"></span>
+      <p>Waiting for server's response...</p>
+    </section>
+
+    <section id="movie-data">
+      <img id="playbill" src="images/et-extraterrestrial.jpg"/>
+      <div id="movie-details">
+        <b>Title:</b> E.T. the Extra-Terrestrial<br/>
+        <b>Year:</b> 1982<br/>
+        <b>Directed by:</b> Steven Spielberg<br/>
+        <b>Music by:</b> John Williams<br/>
+        <b>Starring:</b> Dee Wallace, Peter Coyote, Henry Thomas<br/>
+        <b>Duration:</b> 114 min.<br/>
+        <b>Country:</b> United States<br/>
+        <br/>
+        <b>Plot:</b>
+        <p>An alien is left behind on Earth and is saved by young Elliot, who decides to keep him hidden. While the task force hunts for it, Elliot and his siblings form an emotional bond with their new friend.</p>
+      </div>
+      <div id="actions">
+        <form>
+          <button type="submit">Play</button>
+        </form>
+        <form method="post" action="purchase">
+          <input type="hidden" name="dvdCode" value="DVD-018473664">
+          <button type="submit">Buy DVD ($ 14.99)</button>
+          <p><%= typeof purchaseMessage !== 'undefined' ? purchaseMessage : ''%></p>
+        </form>  
+      </div>
+    </section>
+
+    <section id="comments">
+      <form method="post" action="reviews">
+        <fieldset>
+          <textarea name="newReview" cols="80" rows="5" placeholder="Add your review"></textarea>
+          <% if (!isValidSession) { %>
+            <div>You need a <a href="session/new"">valid session</a> to submit a review.</div>
+          <% } %>
+          <button type="submit">Submit</button>  
+        </fieldset>
+      </form>
+      <hr>
+      <h2>Comments</h2>
+      <dl>
+        <% reviews.forEach(review => {%>
+          <dt><%= username %></dt><dd><%= review %></dd>
+        <% }); %>
+      </dl>
+    </section>
+  </body>
+</html>

