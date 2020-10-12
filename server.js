@@ -8,6 +8,11 @@ const app = express();
 app.set('views', './templates');
 app.set('view engine', 'ejs');
 
+app.use(function(req, res, next) {
+  res.setHeader("Content-Security-Policy", "frame-ancestors 'self';");
+  next();
+});
+
 app.use(express.static('public'));
 app.use(session({
   secret: 'my-secret',
