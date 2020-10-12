@@ -6,7 +6,7 @@
     <style>
       #vulnerable_website {
         position:relative;
-        opacity:0.0;
+        opacity:0.4;
         width:800px;
         height:900px;
         top:75px;
@@ -33,7 +33,7 @@
       <button type="submit">Accept the prize!</button>
     </div>      
 
-    <iframe id="vulnerable_website" src="http://localhost:3000">
+    <iframe id="vulnerable_website" src="http://localhost:3000" sandbox="allow-scripts allow-forms allow-same-origin">
     </iframe>
 
   </body>

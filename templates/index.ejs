@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" type="text/css" href="css/tacit-css.min.css"/>
     <title>The Vulnerable Movie Center</title>
+    <script>
+      if (top != window) {
+        top.location = window.location;
+      }
+    </script>  
     <style>
       body {
         padding-top:0px;
@@ -41,7 +46,6 @@
         display:inline;
       }
     </style>
-
   <script src="js/search.js"></script>
   </head>
   <body>
