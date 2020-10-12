@@ -73,7 +73,7 @@
         <p>An alien is left behind on Earth and is saved by young Elliot, who decides to keep him hidden. While the task force hunts for it, Elliot and his siblings form an emotional bond with their new friend.</p>
       </div>
       <div id="actions">
-        <form>
+        <form action="/">
           <button type="submit">Play</button>
         </form>
         <form method="post" action="purchase">
@@ -82,25 +82,11 @@
           <p><%= typeof purchaseMessage !== 'undefined' ? purchaseMessage : ''%></p>
         </form>  
       </div>
+      <% if (!isValidSession) { %>
+        <div>You need a <a href="session/new"">valid session</a> to buy this movie.</div>
+      <% } %>
     </section>
 
-    <section id="comments">
-      <form method="post" action="reviews">
-        <fieldset>
-          <textarea name="newReview" cols="80" rows="5" placeholder="Add your review"></textarea>
-          <% if (!isValidSession) { %>
-            <div>You need a <a href="session/new"">valid session</a> to submit a review.</div>
-          <% } %>
-          <button type="submit">Submit</button>  
-        </fieldset>
-      </form>
-      <hr>
-      <h2>Comments</h2>
-      <dl>
-        <% reviews.forEach(review => {%>
-          <dt><%= username %></dt><dd><%= review %></dd>
-        <% }); %>
-      </dl>
-    </section>
+    <hr>
   </body>
 </html>

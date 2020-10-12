@@ -5,8 +5,6 @@ const bodyParser = require('body-parser');
 const port = 3000;
 const app = express();
 
-let reviews = [];
-
 app.set('views', './templates');
 app.set('view engine', 'ejs');
 
@@ -25,18 +23,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', function (req, res) {
 	res.render('index', {
     isValidSession: req.session.isValid,
-    username: req.session.username,
-    reviews
-  });
-});
-
-app.post('/reviews', function (req, res) {
-  if (req.session.isValid && req.body.newReview) reviews.push(req.body.newReview);
-
-	res.render('index', {
-    isValidSession: req.session.isValid,
-    username: req.session.username,
-    reviews
+    username: req.session.username
   });
 });
 
@@ -52,7 +39,6 @@ app.post('/purchase', function (req, res) {
     res.render('index', {
       isValidSession: req.session.isValid,
       username: req.session.username,
-      reviews,
       purchaseMessage: 'Your purchase has been charged to your credit card.'
     });
   } else {
