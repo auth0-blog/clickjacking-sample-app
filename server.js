@@ -19,8 +19,7 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
   cookie: {
-    httpOnly: true,
-    sameSite: 'strict'
+    httpOnly: true
   }
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
