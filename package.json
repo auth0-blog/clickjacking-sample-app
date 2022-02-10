@@ -4,7 +4,8 @@
   "description": "A sample environment to test XSS vulnerability.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "start-attacker": "node attacker-server.js"
   },
   "keywords": [],
   "author": "Andrea Chiarelli",
